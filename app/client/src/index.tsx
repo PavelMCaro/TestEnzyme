@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { MyInput } from './components/Form';
+import { FormContainer } from './containers/FormContainer';
 import  globalStyle from './config/style';
 
 globalStyle();
 
 ReactDOM.render(
         <React.Fragment>
-            <MyInput />
+            <FormContainer />
         </React.Fragment>,
     document.getElementById('root')
 )

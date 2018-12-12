@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 
 interface Props {
     title?: string;
+    status?: string;
+    clickButton?: Function;
 }
-export const MyInput: React.SFC<Props> = ({ title }) => (
+export const Form: React.SFC<Props> = ({ title, status, clickButton }) => (
     <Wrapper>
         <Title>{title}</Title>
         <FormWrapper>
-            <input type='checkbox' name='businessRadio' />
             <input type="text" name="FirstName" placeholder='Ingrese primer nombre' />
             <input type="text" name="LastName" placeholder='Ingrese apellido' />
-            <Button onClick={() => console.log('Button clicked')}>Press</Button>
+            <Button onClick={() => clickButton()}>Press to turn {status}</Button>
         </FormWrapper>
     </Wrapper>
 )
 
-MyInput.propTypes = {
+Form.propTypes = {
     title: PropTypes.string
 }

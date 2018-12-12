@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow, mount } from 'enzyme';
-import { MyInput } from './index';
+import { FormContainer } from '../../containers/FormContainer';
 import { FormWrapper, Button } from './styled';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -10,7 +10,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Test component using shallow', () => {
 
-    const component = mount (<MyInput title='Form' />);
+    const component = mount (<FormContainer />);
 
     beforeAll(() => {
         component.setProps({ title: 'Formulario'});
@@ -26,13 +26,14 @@ describe('Test component using shallow', () => {
     });
     
     it('Test exists Props', () =>{
-        expect(component.props().title).toEqual('Formulario');
+        expect(component.prop('title')).toEqual('Formulario');
     });
 
     it('Test exists Button', () =>{
         expect(component.find('button').exists()).toEqual(true);
         component.find(Button).simulate('click');
+        expect(component.state(('stateButton'))).toEqual(true)
+        console.log(component.debug());
     });
 
 });
-
